@@ -5,17 +5,18 @@ use std::fs::File;
 use std::cmp::Ordering;
 
 fn main() {
-    const ONE_MIL: u32 = 1_000_000;
-    const PI: f32 = 3.141592;
-    let age: &str = "47";
-    let mut age: u32 = age.trim().parse()
-        .expect("Age wasn't assign a number");
-    age = age + 1;
-    println!("I'm {} and I want ${}", age, ONE_MIL);
+    let num_1: f32 = 1.111111111111111;
+    println!("f:32 : {}", num_1 + 0.111111111111111);
+    let num_2: f64 = 1.111111111111111;
+    println!("f:64 : {}", num_2 + 0.111111111111111);
+    let num_3: u32 = 5;
+    let num_4: u32 = 4;
+    println!("5 + 4 = {}", num_3+num_4);
+    println!("5 - 4 = {}", num_3-num_4);
+    println!("5 * 4 = {}", num_3*num_4);
+    println!("5 / 4 = {}", num_3/num_4);
+    println!("5 % 4 = {}", num_3%num_4);
 
-    // use _ infront to let the compiler ignore it
-    let _is_true = true;
-    let _my_grade = 'A';
-    println!("is this true {}", _is_true);
-    println!("my grade is {}", _my_grade);
+    let random_num = rand::thread_rng().gen_range(1..101);
+    println!("Random: {}", random_num);
 }
