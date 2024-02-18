@@ -5,35 +5,21 @@ use std::fs::File;
 use std::cmp::Ordering;
 
 fn main() {
-    enum Days {
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday
+    let vec1: Vec<i32> = Vec::new();
+    let mut vec2 = vec![1,2,3,4];
+    vec2.push(5);
+    println!("1st : {}", vec2[0]);
+    let second: &i32 = &vec2[1];
+    match vec2.get(1){
+        Some(second) => println!("2nd : {}", second),
+        None => println!("No 2nd value"),
     }
-
-    impl Days {
-        fn is_weekend(&self) -> bool {
-            match self {
-                Days::Saturday | Days::Sunday => true,
-                _ => false
-            }
-        }
+    for i in &mut vec2 {
+        *i *= 2;
     }
-
-    let today:Days = Days::Monday;
-    match today {
-        Days::Monday => println!("Everyone hates Monday"),
-        Days::Tuesday => println!("Donut day"),
-        Days::Wednesday => println!("Hump day"),
-        Days::Thursday => println!("Pay day"),
-        Days::Friday => println!("Almost weekend"),
-        Days::Saturday => println!("Weekend"),
-        Days::Sunday => println!("Weekend"),
+    for i in &vec2 {
+        println!("{}",i);
     }
-
-    println!("Is today the weekend {}", today.is_weekend());
+    println!("Vec length : {}", vec2.len());
+    println!("Pop : {:?}", vec2.pop());
 }
