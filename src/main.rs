@@ -3,27 +3,23 @@ use rand::Rng;
 use std::io::{Write, BufReader, BufRead, ErrorKind};
 use std::fs::File;
 use std::cmp::Ordering;
-
-fn print_str(x: String){
-    println!("A string {}", x);
-}
-
-fn print_return_str(x: String) -> String {
-    println!("A string {}", x);
-    x
-}
-
-fn change_string(name: &mut String) {
-    name.push_str(" is happy");
-    println!("Message : {}", name)
-}
+use std::collections::HashMap;
 
 
 fn main() {
-   let mut str1 = String::from("world");
-   change_string(&mut str1);
-   //let str2 = str1.clone();
-   //print_str(str1)
-//    let str3 = print_return_str(str1);
-//    println!("str3 = {}", str3);
+   let mut heroes = HashMap::new();
+   heroes.insert("Superman", "Clark Kent");
+   heroes.insert("Batman", "Bruce Wayne");
+   heroes.insert("Flash", "Barry Allen");
+   for(k,v) in heroes.iter(){
+    println!("{} = {}", k, v)
+   }
+   if heroes.contains_key("Batman"){
+    let the_batman = heroes.get("Batman");
+    match the_batman {
+        Some(x) => println!("Batman is a hero"),
+        None => println!("Batman is not a hero"),
+    }
+   }
+   //println!("Length : {}", heroes.len())
 }
