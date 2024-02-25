@@ -4,13 +4,26 @@ use std::io::{Write, BufReader, BufRead, ErrorKind};
 use std::fs::File;
 use std::cmp::Ordering;
 
-use std::ops::Add;
-
-fn get_sum_gen<T:Add<Output = T>>(x: T, y: T) -> T {
-    return x + y;
+fn print_str(x: String){
+    println!("A string {}", x);
 }
 
+fn print_return_str(x: String) -> String {
+    println!("A string {}", x);
+    x
+}
+
+fn change_string(name: &mut String) {
+    name.push_str(" is happy");
+    println!("Message : {}", name)
+}
+
+
 fn main() {
-   println!("5 + 4 = {}", get_sum_gen(5, 4));
-   println!("5.2 + 4.6 = {}", get_sum_gen(5.2, 4.6));
+   let mut str1 = String::from("world");
+   change_string(&mut str1);
+   //let str2 = str1.clone();
+   //print_str(str1)
+//    let str3 = print_return_str(str1);
+//    println!("str3 = {}", str3);
 }
