@@ -5,25 +5,26 @@ use std::fs::File;
 use std::cmp::Ordering;
 
 fn main() {
-    // let var_name = |parameters|  -> return_type {body}
-    // let can_vote = |age: i32| {
-    //     age >= 18
-    // };
-    // println!("Can vote: {}", can_vote(8));
-    // let mut samp1 = 5;
-    // let print_var = || println!("samp1 = {}", samp1);
-    // print_var();
-    // samp1 = 10;
-    // let mut change_var = || samp1 += 1;
-    // change_var();
-    // println!("samp1 = {}", samp1);
-    // samp1 = 10;
-    // println!("samp1 = {}", samp1);
-    fn use_func<T>(a: i32, b:i32, func: T) -> i32 where T: Fn(i32,i32) -> i32 {
-        func(a,b)
+    struct TreeNode<T> {
+        pub left: Option<Box<TreeNode<T>>>,
+        pub right: Option<Box<TreeNode<T>>>,
+        pub key: T,
     }
-    let sum = |a,b| a+b;
-    let prod = |a,b| a*b;
-    println!("5 + 4 = {}", use_func(5, 4, sum));
-    println!("5 * 4 = {}", use_func(5, 4, prod));
+    impl<T> TreeNode<T> {
+        pub fn new(key:T) -> Self{
+            TreeNode { left: None, right: None, key}
+        }
+        pub fn left(mut self, node:TreeNode<T>) -> Self{
+            self.left = Some(Box::new(node));
+            self
+        }
+        pub fn right(mut self, node:TreeNode<T>) -> Self{
+            self.right = Some(Box::new(node));
+            self
+        }
+    }
+
+    let node1 = TreeNode::new(1)
+    .left(TreeNode::new(2))
+    .right(TreeNode::new(3));
 }
